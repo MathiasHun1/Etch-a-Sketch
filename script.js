@@ -2,29 +2,30 @@ const container = document.querySelector('.container');
 
 let rows = getUserInput();
 
-let squareDivs = [];
-
+// create a canvas
 for (let i = 0; i < rows*rows; i++) {
     let squareDiv = document.createElement('div');
     container.appendChild(squareDiv);
     squareDiv.classList.add('square-div');
     squareDiv.style.width = `calc(100% / ${rows})`;
     squareDiv.style.aspectRatio = '1';
-    squareDivs.push(squareDiv);
-    squareDiv.addEventListener('mouseover', () => {
-        if (mouseDown === true) {
-            squareDiv.style.backgroundColor = 'black';
-        }
-    })
 }
 
 let mouseDown = false;
 container.addEventListener('mousedown', () => {
     mouseDown = true;
 });
+
 container.addEventListener('mouseup', () => {
     mouseDown = false;
 });
+
+container.addEventListener('mouseover', (event) => {
+    if (mouseDown === true) {
+        hoveredDiv = event.target;
+        hoveredDiv.style.backgroundColor = 'black';
+    } 
+})
 
 
 
