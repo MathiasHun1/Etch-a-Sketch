@@ -1,16 +1,32 @@
 const container = document.querySelector('.container');
 
-rows = getUserInput()
-createGrid(rows);
+let rows = getUserInput();
 
-function createGrid(rows) {
-    for (let i = 0; i < rows*rows; i++) {
-        let squareDiv = document.createElement('div');
-        container.appendChild(squareDiv);
-        squareDiv.classList.add('square-div');
-        squareDiv.setAttribute('style', `width: calc(100% / ${rows})`);
-    }
+let squareDivs = [];
+
+for (let i = 0; i < rows*rows; i++) {
+    let squareDiv = document.createElement('div');
+    container.appendChild(squareDiv);
+    squareDiv.classList.add('square-div');
+    squareDiv.style.width = `calc(100% / ${rows})`;
+    squareDiv.style.aspectRatio = '1';
+    squareDivs.push(squareDiv);
+    squareDiv.addEventListener('mouseover', () => {
+        if (mouseDown === true) {
+            squareDiv.style.backgroundColor = 'black';
+        }
+    })
 }
+
+let mouseDown = false;
+container.addEventListener('mousedown', () => {
+    mouseDown = true;
+});
+container.addEventListener('mouseup', () => {
+    mouseDown = false;
+});
+
+
 
 function getUserInput() {
     let input;
@@ -20,4 +36,7 @@ function getUserInput() {
 
     return Math.abs(input);
 }
+
+
+
 
