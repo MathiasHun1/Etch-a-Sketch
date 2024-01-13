@@ -1,25 +1,31 @@
 const container = document.querySelector('.container');
+const body = document.querySelector('#body');
 
-let rows = getUserInput();
+// start the page with a canvas
+createCanvas(container,getUserInput());
 
-// create a canvas
-for (let i = 0; i < rows*rows; i++) {
-    let squareDiv = document.createElement('div');
-    container.appendChild(squareDiv);
-    squareDiv.classList.add('square-div');
-    squareDiv.style.width = `calc(100% / ${rows})`;
-    squareDiv.style.aspectRatio = '1';
-}
+// add reset/resize button -OK
+const resetButton = document.createElement('button');
+resetButton.setAttribute('id', 'reset-button');
+resetButton.textContent = "reset";
+body.appendChild(resetButton);
 
+//resetting --OK
+resetButton.addEventListener('click', () => {
+    container.innerHTML = '';
+    let rows = getUserInput();
+    createCanvas(container, rows);
+});
+
+// mouse-down flag --OK
 let mouseDown = false;
 container.addEventListener('mousedown', () => {
     mouseDown = true;
 });
-
 container.addEventListener('mouseup', () => {
     mouseDown = false;
 });
-
+// implementation of the drawing, using event object --OK
 container.addEventListener('mouseover', (event) => {
     if (mouseDown === true) {
         hoveredDiv = event.target;
@@ -27,8 +33,18 @@ container.addEventListener('mouseover', (event) => {
     } 
 })
 
+// create canvas func --OK
+function createCanvas (cont, rows) {
+    for (let i = 0; i < rows*rows; i++) {
+        let squareDiv = document.createElement('div');
+        cont.appendChild(squareDiv);
+        squareDiv.classList.add('square-div');
+        squareDiv.style.width = `calc(100% / ${rows})`;
+        squareDiv.style.aspectRatio = '1';
+    }    
+}
 
-
+// user input func --OK
 function getUserInput() {
     let input;
     do {
