@@ -30,7 +30,10 @@ container.addEventListener('mouseover', (event) => {
     if (mouseDown === true) {
         hoveredDiv = event.target;
         hoveredDiv.style.backgroundColor = 'black';
-    } 
+        if (hoveredDiv === container) {
+            container.style.backgroundColor = 'white';
+        }
+    }
 })
 
 // create canvas func --OK
