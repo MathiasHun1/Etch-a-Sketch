@@ -55,3 +55,7 @@ header span {
     display: block;
     margin: 1em auto;
 }
+
+.square-div {
+    border: 1px solid black;
+}

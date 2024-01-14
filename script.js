@@ -1,22 +1,23 @@
 const container = document.querySelector('.container');
 const body = document.querySelector('#body');
+const blackButton = document.querySelector('#black-button');
+const rainbowButton = document.querySelector('#rainbow-button');
+const clearButton = document.querySelector('#clear-button');
+let rangeInput = document.querySelector('#range-input');
+const defaultSize = rangeInput.value;
 
 // start the page with a canvas
-createCanvas(container,getUserInput());
+createCanvas(container, defaultSize);
 
-// add reset/resize button -OK
-// const resetButton = document.createElement('button');
-// resetButton.setAttribute('id', 'reset-button');
-// resetButton.textContent = "reset";
-// body.appendChild(resetButton);
-// resetButton.style.backgroundColor = 'aquamarine';
-
-// add color button
-// const colorButton = document.createElement('button');
-// colorButton.setAttribute('id', 'color-button');
-// colorButton.innerText = 'Rainbow';
-// body.appendChild(colorButton);
-// colorButton.style.backgroundColor = 'aquamarine';
+// redraw canvas with clear button
+clearButton.addEventListener('click',() => {
+    container.innerHTML = '';
+    createCanvas(container, pixels)
+})
+let pixels = rangeInput.value;
+rangeInput.addEventListener('input', () => {
+    pixels = rangeInput.value;
+})
 
 // add color-button flag
 let colorFlag = false;
@@ -33,18 +34,6 @@ colorButton.addEventListener('click', () => {
         colorButton.style.backgroundColor = 'aquamarine';
     }
 });  
-
-//resetting --OK
-resetButton.addEventListener('click', () => {
-    container.innerHTML = '';
-    let rows = getUserInput();
-    createCanvas(container, rows);
-    colorFlag = false;
-    colorButton.style.backgroundColor = 'aquamarine';
-});
-
-resetButton.addEventListener('mousedown', () => resetButton.style.backgroundColor = 'darkcyan');
-resetButton.addEventListener('mouseup', () => resetButton.style.backgroundColor = 'aquamarine');
 
 // mouse-down flag --OK
 let mouseDown = false;
