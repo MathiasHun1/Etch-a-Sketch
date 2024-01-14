@@ -15,9 +15,10 @@
     margin: 2em auto;
 }
 
-#reset-button {
+#reset-button, #color-button {
     display: block;
     width: 80px;
     padding: 1em;
     margin: 0 auto;
+    /* background-color: aquamarine; */
 }
