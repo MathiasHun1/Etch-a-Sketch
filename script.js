@@ -5,18 +5,18 @@ const body = document.querySelector('#body');
 createCanvas(container,getUserInput());
 
 // add reset/resize button -OK
-const resetButton = document.createElement('button');
-resetButton.setAttribute('id', 'reset-button');
-resetButton.textContent = "reset";
-body.appendChild(resetButton);
-resetButton.style.backgroundColor = 'aquamarine';
+// const resetButton = document.createElement('button');
+// resetButton.setAttribute('id', 'reset-button');
+// resetButton.textContent = "reset";
+// body.appendChild(resetButton);
+// resetButton.style.backgroundColor = 'aquamarine';
 
 // add color button
-const colorButton = document.createElement('button');
-colorButton.setAttribute('id', 'color-button');
-colorButton.innerText = 'Rainbow';
-body.appendChild(colorButton);
-colorButton.style.backgroundColor = 'aquamarine';
+// const colorButton = document.createElement('button');
+// colorButton.setAttribute('id', 'color-button');
+// colorButton.innerText = 'Rainbow';
+// body.appendChild(colorButton);
+// colorButton.style.backgroundColor = 'aquamarine';
 
 // add color-button flag
 let colorFlag = false;
@@ -88,12 +88,13 @@ function createCanvas (cont, rows) {
 function getUserInput() {
     let input;
     do {
-         input = parseInt(prompt('Wirte how many pixels wide you want the canvas: '));
+         input = parseInt(prompt('Wirte how many pixels wide you want the canvas: ', '100'));
     } while (input > 100 || isNaN(input))
 
     return Math.abs(input);
 }
 
+// randomize color
 function randomRGB () {
     return Math.floor(Math.random() * 255);
 }
